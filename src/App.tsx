@@ -1,26 +1,40 @@
 import React from 'react';
-import logo from './logo.svg';
+import { RouterProvider } from 'react-router';
+import { HelmetProvider } from 'react-helmet-async';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { User } from './types/generic/user.type';
+import generateRoutes from './routes';
+import { createSession } from './store/auth.store';
 import './App.css';
+import { connect } from 'react-redux';
 
-function App() {
+const helmetContext = {};
+
+interface AppComponentProps {
+  user: User | null,
+}
+
+
+function AppComponent({
+  user,
+}: AppComponentProps) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HelmetProvider context={helmetContext}>
+      <RouterProvider router={generateRoutes(user)} />
+      <ToastContainer />
+    </HelmetProvider>
   );
 }
+
+const stp = (state: any) => ({
+  user: state.auth
+});
+
+const dtp = {
+  setUser: createSession
+};
+
+const App = connect(stp, dtp)(AppComponent);
 
 export default App;

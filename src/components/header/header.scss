@@ -1,0 +1,41 @@
+// Header.scss
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .right-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .button {
+    margin-left: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #555;
+    color: #fff;
+    border: none;
+  }
+  
+  .links-container {
+    margin-left: auto;
+    display: flex;
+  }
+  
+  .link {
+    margin-left: 1rem;
+    text-decoration: none;
+    color: #fff;
+  }
+  
