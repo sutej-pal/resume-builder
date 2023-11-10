@@ -1,0 +1,43 @@
+.pdf-viewer-component-main {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    flex-flow: column;
+    background-color: rgb(101, 110, 131);
+    color: rgb(255, 255, 255);
+    user-select: none;
+
+    .rb-pdf-viewer {
+        // height: 100vh;
+        // overflow: scroll;
+
+        .rb-pdf-viewer-document {
+            .rb-pdf-viewer-page {
+                background-color: beige !important;
+                display: flex;
+                justify-content: center;
+                // height:80vh;
+            }
+        }
+    }
+
+}
+
+// .react-pdf__Page {
+//     background-color: #ccc !important;
+// }
+
+// .react-pdf__Page {
+//     display: flex;
+//     justify-content: center;
+//     canvas {
+//         height: 80% !important;
+//         border-radius: 3px;
+//         border: 1px solid #ccc;
+//     }
+// }
+// .rb-pdf-viewer-ss {
+//     height: 100px;
+// }

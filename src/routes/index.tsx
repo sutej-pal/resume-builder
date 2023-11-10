@@ -35,10 +35,10 @@ function generateRoutes(user: User | null) {
                     <Footer />
                 </>
             ),
-            errorElement: user ? <Error404 /> : <Navigate to="/login" />,
+            errorElement: <Error404 />,
             children: guestRouteChildren,
         },
-        ...authRoutes,
+        // ...authRoutes,
     ])
 }
 
