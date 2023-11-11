@@ -1,14 +1,7 @@
 import axios from "axios";
 import { getUserTokenFromLS } from "../helpers/storage.helper";
-import { HTTP400Response } from "../types/responses/http-400-response.type";
 import { toast } from "react-toastify";
-
-const http = axios.create({
-    baseURL: process.env.REACT_APP_API_ENDPOINT,
-    headers: {
-        "Content-type": "application/json"
-    }
-})
+import http from "../config/axios.config";
 
 async function httpGet<T>(url: string, headers?: any, params?: any): Promise<T> {
     const endpoint = url.startsWith("http") ? url : process.env.REACT_APP_API_ENDPOINT + url;

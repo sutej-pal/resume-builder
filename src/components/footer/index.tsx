@@ -5,21 +5,12 @@ const Footer = () => {
   const location = useLocation();
   console.log(location.pathname);
 
-  const [currentPath, setCurrentPath] = useState<string>('');
-  const [isFooterHidden, hideFooter] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (location.pathname.includes('resume-builder')) {
-      hideFooter(true);
-    }
-  }, [currentPath]);
+  if (location.pathname.includes('resume-builder')) {
+    return null
+  }
 
   return (
-    <>
-      {
-        isFooterHidden ? '' : <div>Footer</div>
-      }
-    </>
+    <div>Footer</div>
   );
 };
 

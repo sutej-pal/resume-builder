@@ -1,6 +1,6 @@
 import { Outlet, createBrowserRouter, Navigate } from "react-router-dom";
 import Footer from "../components/footer";
-import Header from "../components/header";
+import { Header } from "../components/header";
 import { User } from "../types/generic/user.type";
 import Error404 from "../pages/error-404.pages";
 import { AuthRoute } from "./route-auth-checker";
