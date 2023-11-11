@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { SignUpModal } from '../SignUpModal';
 import { LoginModal } from '../LoginModal';
 import { StoreState } from "../../types/store-state.type";
@@ -12,7 +12,10 @@ function HeaderComponent({
 }: any) {
 
 
-  console.log(user);
+  const location = useLocation();
+  console.log('location', location);
+  if (location.pathname === "/resume-builder") return null;
+
   const logOut = (e: any) => {
     e.preventDefault()
     endSession();

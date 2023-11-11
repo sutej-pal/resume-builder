@@ -36,6 +36,7 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "@types/bootstrap": "^5.2.9",
     "@types/redux-logger": "^3.0.10"
   },
   "eslintConfig": {

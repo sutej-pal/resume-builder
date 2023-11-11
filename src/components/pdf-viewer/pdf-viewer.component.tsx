@@ -63,7 +63,7 @@ const PdfViewer = ({ pdfBlob }: any) => {
   }, 1000);
 
   return (
-    <div className='pdf-viewer-component-main'>
+    <div className='pdf-viewer-component-main h-100'>
       <div className="rb-pdf-viewer">
         <Document className="rb-pdf-viewer-document" file={file} onLoadSuccess={onDocumentLoadSuccess} options={options}>
           <Page canvasRef={canvasRef} className="rb-pdf-viewer-page" renderTextLayer={false} renderAnnotationLayer={false} pageNumber={pageNumber} scale={1} />

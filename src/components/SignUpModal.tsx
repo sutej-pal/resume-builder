@@ -1,9 +1,21 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { FormInput } from "./atoms/form-input.atom";
 import { registerWithEmail } from "../services/auth.service";
 import { toast } from "react-toastify";
 
 const SignUpModalComponent = () => {
+
+    const modalMain = useRef<HTMLDivElement | null>(null);
+    const closeButton = useRef<HTMLButtonElement | null>(null);
+
+    const closeModal = () => {
+        if (modalMain.current?.classList.contains('show')) {
+            // hide modal
+            if (closeButton.current) {
+                closeButton.current.click();
+            }
+        }
+    };
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -19,8 +31,9 @@ const SignUpModalComponent = () => {
             let resp = await registerWithEmail(payload)
             console.log(resp);
             toast.success(resp.message)
+            closeModal();
         } catch (error) {
-            
+
         }
     }
     return (
@@ -32,6 +45,7 @@ const SignUpModalComponent = () => {
             tabIndex={-1}
             aria-labelledby="staticBackdropLabel1"
             aria-hidden="true"
+            ref={modalMain}
         >
             <div className="modal-dialog modal-dialog-centered" style={{ maxWidth: '450px' }}>
                 <div className="modal-content">
@@ -46,6 +60,7 @@ const SignUpModalComponent = () => {
                             className="btn-close position-absolute"
                             data-bs-dismiss="modal"
                             aria-label="Close"
+                            ref={closeButton}
                             style={{ top: '25px', right: '25px' }}
                         />
                     </div>
