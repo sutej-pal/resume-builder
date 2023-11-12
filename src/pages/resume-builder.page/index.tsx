@@ -33,9 +33,8 @@ function ResumeBuilder() {
                 <div className="col-md-6">
                     <RBForm />
                 </div>
-                <div className="col-md-6" style={{ backgroundColor: 'rgb(101, 110, 131)' }}>
-                    <div>Sample</div>
-                    {ready ? <PdfViewer pdfBlob={pdfBlob} /> : ''}
+                <div className="col-md-6 d-flex justify-content-center flex-column" style={{ backgroundColor: 'rgb(101, 110, 131)' }}>
+                    {ready ? <PdfViewer pdfBlob={pdfBlob} /> : null}
                 </div>
             </div>
         </div >
