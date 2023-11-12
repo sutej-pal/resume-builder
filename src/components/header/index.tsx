@@ -31,6 +31,7 @@ function HeaderComponent({
           className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none"
         >
           {/* TODO: Add Logo */}
+          Logo
         </a>
         <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
           <li>
@@ -57,34 +58,31 @@ function HeaderComponent({
             </Link>
           </li>
         </ul>
-        <div className="col-md-3 text-end" style={{ display: user?.name ? 'none' : 'block' }}>
-          <button className='btn btn-outline-primary me-2' data-bs-toggle="modal" data-bs-target="#login-card">
-            Login
-          </button>
-          <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signup-card">
-            Sign-up
-          </button>
-        </div>
-        <div>
-          {
-            user?.role === 'user' ?
-              <>
-                <div className="dropdown">
-                  <span className='align-items-center border d-flex justify-content-center p-2 rounded-circle'
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    <i className="fa-solid fa-user"></i>
-                  </span>
-                  <ul className="dropdown-menu">
-                    <li><a className="dropdown-item" href="!#">Action</a></li>
-                    <li><a className="dropdown-item" href="!#">Another action</a></li>
-                    <li><hr className="dropdown-divider" /></li>
-                    <li><a className="dropdown-item" href="!#" onClick={logOut}>Logout</a></li>
-                  </ul>
+        {
+          user?.role === 'user' ?
+            <div className="col-md-3 text-end">
+              <div className="dropdown">
+                <div className='align-items-center border d-flex justify-content-center p-2 rounded-circle'
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  <i className="fa-solid fa-user"></i>
                 </div>
-              </>
-              : <></>
-          }
-        </div>
+                <ul className="dropdown-menu">
+                  <li><a className="dropdown-item" href="!#">Action</a></li>
+                  <li><a className="dropdown-item" href="!#">Another action</a></li>
+                  <li><hr className="dropdown-divider" /></li>
+                  <li><a className="dropdown-item" href="!#" onClick={logOut}>Logout</a></li>
+                </ul>
+              </div>
+            </div>
+            : <div className="col-md-3 text-end">
+              <button className='btn btn-outline-primary me-2' data-bs-toggle="modal" data-bs-target="#login-card">
+                Login
+              </button>
+              <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signup-card">
+                Sign-up
+              </button>
+            </div>
+        }
       </header >
       <LoginModal />
       <SignUpModal />

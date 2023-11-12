@@ -8,7 +8,8 @@
     background-color: rgb(101, 110, 131);
     color: rgb(255, 255, 255);
     user-select: none;
-    // padding: 25px;
+    padding: 25px;
+    // height: 80vh;
 
     .rb-pdf-viewer {
         // height: 100vh;
@@ -20,6 +21,9 @@
                 display: flex;
                 justify-content: center;
                 // height:80vh;
+                canvas {
+                    width: 100% !important;
+                }
             }
         }
     }
