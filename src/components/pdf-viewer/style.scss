@@ -25,9 +25,18 @@
         }
     }
 
-    .pdf-options-header {
-        svg {
-            filter: invert;
+    .select-template-btn {
+        img {
+            filter: invert(1);
+            transition: filter .15s;
+        }
+        color: #fff;
+
+        &:hover {
+            img {
+                filter: none;
+            }
+            color: black;
         }
     }
 }

@@ -3,6 +3,7 @@ import { pdfjs, Document, Page } from 'react-pdf';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
 import './style.scss';
+import ChooseTemplateIcon from './../../assets/icons/choose.png'
 
 import type { PDFDocumentProxy } from 'pdfjs-dist';
 
@@ -63,10 +64,12 @@ const PdfViewer = ({ pdfBlob }: any) => {
       <div className="rb-pdf-viewer">
         <div className='d-flex justify-content-between align-items-center py-3'>
           <div className='pdf-options-header'>
-            <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M 5.5 5.5 v 4 h 4 v -4 h -4 Z M 11 4 v 7 H 4 V 4 h 7 Z m 3.5 1.5 v 4 h 4 v -4 h -4 Z M 20 4 v 7 h -7 V 4 h 7 Z M 5.5 14.5 v 4 h 4 v -4 h -4 Z M 11 13 v 7 H 4 v -7 h 7 Z m 3.5 1.5 v 4 h 4 v -4 h -4 Z M 20 13 v 7 h -7 v -7 h 7 Z" />
-            </svg>
-            Select Template
+            <button type="button" className="btn select-template-btn">
+              <img src={ChooseTemplateIcon} alt="" />
+              <span className='ps-2'>
+                Select Template
+              </span>
+            </button>
           </div>
           <div>
             <button type="button" onClick={() => downloadPDF()} className="btn btn-primary">Download PDF</button>

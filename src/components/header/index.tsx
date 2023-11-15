@@ -58,14 +58,15 @@ function HeaderComponent({
             </Link>
           </li>
         </ul>
-        {
-          user?.role === 'user' ?
-            <div className="col-md-3 text-end">
-              <div className="dropdown">
-                <div className='align-items-center border d-flex justify-content-center p-2 rounded-circle'
-                  data-bs-toggle="dropdown" aria-expanded="false">
-                  <i className="fa-solid fa-user"></i>
-                </div>
+        <div className="col-md-3 text-end">
+          {
+            user?.role === 'user' ?
+              <div className="dropdown text-end">
+                <span data-bs-toggle="dropdown" aria-expanded="false">
+                  <span className='border p-2 rounded-circle'>
+                    <i className="fa-solid fa-user"></i>
+                  </span>
+                </span>
                 <ul className="dropdown-menu">
                   <li><a className="dropdown-item" href="!#">Action</a></li>
                   <li><a className="dropdown-item" href="!#">Another action</a></li>
@@ -73,16 +74,16 @@ function HeaderComponent({
                   <li><a className="dropdown-item" href="!#" onClick={logOut}>Logout</a></li>
                 </ul>
               </div>
-            </div>
-            : <div className="col-md-3 text-end">
-              <button className='btn btn-outline-primary me-2' data-bs-toggle="modal" data-bs-target="#login-card">
-                Login
-              </button>
-              <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signup-card">
-                Sign-up
-              </button>
-            </div>
-        }
+              : <div>
+                <button className='btn btn-outline-primary me-2' data-bs-toggle="modal" data-bs-target="#login-card">
+                  Login
+                </button>
+                <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signup-card">
+                  Sign-up
+                </button>
+              </div>
+          }
+        </div>
       </header >
       <LoginModal />
       <SignUpModal />
