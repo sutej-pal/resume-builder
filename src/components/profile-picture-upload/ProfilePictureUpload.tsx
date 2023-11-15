@@ -138,19 +138,37 @@ const ProfilePictureUpload = () => {
                         <div className="modal-body">
                             {
                                 image ?
-                                    <div className='image-cropper-container position-relative'>
-                                        <Cropper
-                                            image={image}
-                                            crop={crop}
-                                            zoom={zoom}
-                                            aspect={1}
-                                            onCropChange={setCrop}
-                                            onCropComplete={(_, croppedAreaPixels) => {
-                                                setCroppedAreaPixels(croppedAreaPixels);
-                                            }}
-                                            onZoomChange={setZoom}
-                                        />
-                                    </div> :
+                                    <>
+                                        <div className='text-center text-secondary mb-3'>Drag to reposition the photo</div>
+                                        <div className='image-cropper-container position-relative'>
+                                            <Cropper
+                                                image={image}
+                                                crop={crop}
+                                                zoom={zoom}
+                                                aspect={1}
+                                                onCropChange={setCrop}
+                                                onCropComplete={(_, croppedAreaPixels) => {
+                                                    setCroppedAreaPixels(croppedAreaPixels);
+                                                }}
+                                                onZoomChange={setZoom}
+                                            />
+                                        </div>
+                                        <div className='mt-3'>
+                                            {/* <label className="form-label">Zoom</label> */}
+                                            <input
+                                                type="range"
+                                                value={zoom}
+                                                min={1}
+                                                max={4}
+                                                step={0.05}
+                                                aria-labelledby="Zoom"
+                                                onChange={(e) => {
+                                                    setZoom(+e.target.value)
+                                                }}
+                                                className="form-range"
+                                            />
+                                        </div>
+                                    </> :
                                     <div
                                         onDragEnter={(e) => handleEnter(e)}
                                         onDragLeave={(e) => handleLeave(e)}
