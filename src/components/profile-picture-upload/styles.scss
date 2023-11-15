@@ -1,0 +1,13 @@
+
+.profile-picture-container {
+    width: 80px;
+    height: 80px;
+}
+.file-upload-container,
+.image-cropper-container {
+    height: 300px;
+    width: auto;
+}
+.file-upload-container {
+    border: var(--bs-border-width) dashed var(--bs-gray-600);
+}
