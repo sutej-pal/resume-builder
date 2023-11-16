@@ -1,9 +1,9 @@
-import React, { useState, ChangeEvent, useRef, useCallback } from 'react';
+import React, { useState, ChangeEvent, useRef } from 'react';
 import Cropper from 'react-easy-crop';
 import './styles.scss';
 import { cropImage } from '../../utils/crop.utils';
 
-const ProfilePictureUpload = () => {
+const ProfilePictureUpload = ({ profilePicture = (value: string) => { } }: { profilePicture: Function }) => {
     const fileUpload = useRef<HTMLInputElement>(null);
     const imageUploadModal = useRef<HTMLButtonElement>(null);
     const [image, setImage] = useState<string | undefined>(undefined);
@@ -14,14 +14,11 @@ const ProfilePictureUpload = () => {
 
     const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
-
         if (file) {
             const reader = new FileReader();
-
             reader.onloadend = () => {
                 setImage(reader.result as string);
             };
-
             reader.readAsDataURL(file);
         }
     };
@@ -65,6 +62,7 @@ const ProfilePictureUpload = () => {
     const onComplete = (imagePromisse: Promise<any>) => {
         imagePromisse.then((image: React.SetStateAction<string | undefined>) => {
             setCroppedImage(image);
+            profilePicture(image);
         });
     }
 
