@@ -16,12 +16,19 @@
                 background-color: beige !important;
                 display: flex;
                 justify-content: center;
+                // height: calc(100vh - 150px);
 
                 canvas {
                     width: 100% !important;
                     height: auto !important;
                 }
             }
+
+            // .react-pdf__message {
+            //     background-color: beige !important;
+            //     width: 100% !important;
+            //     height: 100% !important;
+            // }
         }
     }
 
@@ -30,12 +37,14 @@
             filter: invert(1);
             transition: filter .15s;
         }
+
         color: #fff;
 
         &:hover {
             img {
                 filter: none;
             }
+
             color: black;
         }
     }

@@ -32,6 +32,16 @@ async function httpPut<T>(url: string, payload: any, headers?: any): Promise<T> 
     })).data;
 }
 
+async function httpPatch<T>(url: string, payload: any, headers?: any): Promise<T> {
+    const endpoint = url.startsWith("http") ? url : process.env.REACT_APP_API_ENDPOINT + url;
+    return (await http.patch<T>(endpoint, payload, {
+        headers: {
+            Authorization: "Bearer " + getUserTokenFromLS(),
+            ...headers,
+        }
+    })).data;
+}
+
 function handleError(error: any) {
     class CustomError {
         data: {};
@@ -61,5 +71,6 @@ export {
     httpGet,
     httpPost,
     httpPut,
+    httpPatch,
     handleError
 }

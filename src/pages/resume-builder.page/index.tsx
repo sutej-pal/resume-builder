@@ -18,10 +18,8 @@ function ResumeBuilder() {
             const resp = await axios.get('http://localhost:4000/api/pdf/generate-pdf', {
                 responseType: 'blob'
             });
-            // resp.data.arrayBuffer().then((arrayBuffer: any) => {
             setPDFBlob(resp.data);
             setReady(true);
-            // });
         } catch (error) {
             console.log('error', error);
         }
@@ -31,7 +29,7 @@ function ResumeBuilder() {
         <div className="container-fluid vh-100">
             <div className="row h-100">
                 <div className="col-md-6">
-                    <RBForm />
+                    <RBForm fetchResume={getPDF} />
                 </div>
                 <div className="col-md-6 d-flex justify-content-center flex-column" style={{ backgroundColor: 'rgb(101, 110, 131)' }}>
                     {ready ? <PdfViewer pdfBlob={pdfBlob} /> : null}

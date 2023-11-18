@@ -76,7 +76,7 @@ const PdfViewer = ({ pdfBlob }: any) => {
           </div>
         </div>
         <Document className="rb-pdf-viewer-document" file={file} onLoadSuccess={onDocumentLoadSuccess} options={options}>
-          <Page canvasRef={canvasRef} className="rb-pdf-viewer-page" renderTextLayer={false} renderAnnotationLayer={false} pageNumber={pageNumber} scale={.9} />
+          <Page className="rb-pdf-viewer-page" loading={<>Samssple</>} renderTextLayer={false} renderAnnotationLayer={false} pageNumber={pageNumber} scale={0.9} />
         </Document>
         <div className="d-flex justify-content-center my-3">
           <div className="border border-light-subtle btn-group" style={{ maxWidth: '150px' }}>
