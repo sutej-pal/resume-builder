@@ -4,8 +4,13 @@ import thunk from "redux-thunk";
 import { rootReducer } from "./root-reducer";
 
 // prepare the default state
+
+let auth = localStorage.getItem("rb.user") || null;
+if (auth) {
+    auth = JSON.parse(auth)
+}
 const state = {
-    auth: JSON.parse(localStorage.getItem("rb.user") as any),
+    auth
 };
 
 // prepare the store
