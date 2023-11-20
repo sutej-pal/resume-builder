@@ -4,6 +4,7 @@ import './style.scss';
 import ChooseTemplateIcon from './../../assets/icons/choose.png'
 
 import type { PDFDocumentProxy } from 'pdfjs-dist';
+import Spinner from '../spinner';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
@@ -14,12 +15,18 @@ const options = {
 
 type PDFFile = string | File | null;
 
+const Loader = () => {
+  return (
+    <div className='align-items-center d-flex justify-content-center' style={{minHeight: '200px'}}>
+      <Spinner />
+    </div>
+  )
+}
+
 const PdfViewer = ({ pdfBlob }: any) => {
   const [file, setFile] = useState<PDFFile>('./sample.pdf');
   const [numPages, setNumPages] = useState<number>(0);
   const [pageNumber, setPageNumber] = useState<number>(1);
-
-  const canvasRef = useRef(null);
 
   useEffect(() => {
     setFile(pdfBlob);
@@ -70,8 +77,8 @@ const PdfViewer = ({ pdfBlob }: any) => {
             <button type="button" onClick={() => downloadPDF()} className="btn btn-primary">Download PDF</button>
           </div>
         </div>
-        <Document className="rb-pdf-viewer-document" file={file} onLoadSuccess={onDocumentLoadSuccess} options={options}>
-          <Page className="rb-pdf-viewer-page" loading={<>Samssple</>} renderTextLayer={false} renderAnnotationLayer={false} pageNumber={pageNumber} scale={0.9} />
+        <Document className="rb-pdf-viewer-document" loading={<Loader />} file={file} onLoadSuccess={onDocumentLoadSuccess} options={options}>
+          <Page className="rb-pdf-viewer-page" renderTextLayer={false} renderAnnotationLayer={false} pageNumber={pageNumber} scale={0.9} />
         </Document>
         <div className="d-flex justify-content-center my-3">
           <div className="border border-light-subtle btn-group" style={{ maxWidth: '150px' }}>

@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { User } from './types/generic/user.type';
 import generateRoutes from './routes';
 import { createSession } from './store/auth.store';
-import './App.css';
+import './App.scss';
 import { connect } from 'react-redux';
 
 const helmetContext = {};

@@ -28,7 +28,6 @@ instance.interceptors.response.use(
         return response;
     },
     (error) => {
-        debugger
         if (error.response?.status === 401) {
             localStorage.clear();
             toast.error('labels.unauthorized', {

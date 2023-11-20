@@ -1,8 +1,8 @@
 function getUserTokenFromLS() {
-    const lsUserData = localStorage.getItem('rb.user');
-    if (lsUserData) {
-        const user = JSON.parse(lsUserData);
-        return user?.token ?? null;
+    const lsUserToken = localStorage.getItem('rb.userToken') ?? null;
+    if (lsUserToken) {
+        const token = JSON.parse(lsUserToken);
+        return token ?? null;
     } else {
         return null;
     }

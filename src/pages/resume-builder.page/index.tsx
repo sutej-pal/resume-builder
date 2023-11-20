@@ -3,6 +3,7 @@ import './styles.scss';
 import axios from "axios";
 import PdfViewer from '../../components/pdf-viewer/pdf-viewer.component';
 import RBForm from '../../components/rb-form.component';
+import { getResume } from '../../services/user.service';
 
 function ResumeBuilder() {
 
@@ -15,10 +16,8 @@ function ResumeBuilder() {
 
     const getPDF = async () => {
         try {
-            const resp = await axios.get('http://localhost:4000/api/pdf/generate-pdf', {
-                responseType: 'blob'
-            });
-            setPDFBlob(resp.data);
+            const resp = await getResume('655a3f86f16b25f76eeb4864');
+            setPDFBlob(resp);
             setReady(true);
         } catch (error) {
             console.log('error', error);
