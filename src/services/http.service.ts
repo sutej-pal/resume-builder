@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import http from "../config/axios.config";
 
 async function httpGet<T>(url: string, headers?: any, params?: any): Promise<T> {
-    const endpoint = url.startsWith("http") ? url : process.env.REACT_APP_API_ENDPOINT + url;
+    const endpoint = url.startsWith("http") ? url : 'https://resume-builder-server-3gb9.onrender.com/api/' + url;
     return (await http.get<T>(endpoint, {
         headers: {
             Authorization: "Bearer " + getUserTokenFromLS(),
@@ -14,7 +14,7 @@ async function httpGet<T>(url: string, headers?: any, params?: any): Promise<T> 
     })).data;
 }
 async function httpPost<T>(url: string, payload: any, headers?: any): Promise<T> {
-    const endpoint = url.startsWith("http") ? url : process.env.REACT_APP_API_ENDPOINT + url;
+    const endpoint = url.startsWith("http") ? url : 'https://resume-builder-server-3gb9.onrender.com/api/' + url;
     return (await http.post<T>(endpoint, payload, {
         headers: {
             Authorization: "Bearer " + getUserTokenFromLS(),
@@ -23,7 +23,7 @@ async function httpPost<T>(url: string, payload: any, headers?: any): Promise<T>
     })).data;
 }
 async function httpPut<T>(url: string, payload: any, headers?: any): Promise<T> {
-    const endpoint = url.startsWith("http") ? url : process.env.REACT_APP_API_ENDPOINT + url;
+    const endpoint = url.startsWith("http") ? url : 'https://resume-builder-server-3gb9.onrender.com/api/' + url;
     return (await http.put<T>(endpoint, payload, {
         headers: {
             Authorization: "Bearer " + getUserTokenFromLS(),
