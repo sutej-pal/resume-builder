@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { FormInput } from '../atoms/form-input.atom';
 import { updateResumeData } from '../../services/user.service';
 import ProfilePictureUpload from '../profile-picture-upload/ProfilePictureUpload';
@@ -25,17 +25,16 @@ const RBForm = ({ fetchResume = () => { } }: { fetchResume: Function }) => {
         profile: ''
     });
 
-    const patchResumeData = async () => {
-        console.log('dsd')
+    const patchResumeData = async (data: any) => {
         try {
-            await updateResumeData(formData.id, formData);
+            await updateResumeData(data.id, data);
             fetchResume();
         } catch (error) {
             console.log(error);
         }
     };
 
-    const debouncedPatchResumeData = _.debounce((patchResumeData), 1500);
+    const debouncedPatchResumeData = useRef(_.debounce(patchResumeData, 500));
 
 
     const editorConfig: EditorConfig = {
@@ -48,16 +47,18 @@ const RBForm = ({ fetchResume = () => { } }: { fetchResume: Function }) => {
         value: string
     ) => {
         try {
-            console.log('1')
             setFormData({
                 ...formData,
                 [fieldName]: value
             });
-            debouncedPatchResumeData()
         } catch (e) {
             console.log(e);
         }
     };
+
+    useEffect(() => {
+        debouncedPatchResumeData.current(formData);
+    }, [formData]);
 
     // Render the form
     return (
